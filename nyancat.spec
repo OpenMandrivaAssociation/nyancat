@@ -32,3 +32,10 @@ install -m 0644 src/telnetsrvlib.py %{buildroot}/%{python_sitelib}
 %{_bindir}/%{name}
 %{_bindir}/%{name}.py
 %{python_sitelib}/telnetsrvlib.py
+
+
+%changelog
+* Thu Dec 01 2011 Alexander Khrukin <akhrukin@mandriva.org> 0.1-1
++ Revision: 735981
+- imported package nyancat
+
