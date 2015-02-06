@@ -1,6 +1,6 @@
 Name:		nyancat
 Version:	0.1
-Release:	1
+Release:	2
 Summary:	Nyancat rendered in your terminal
 Group:		Toys
 License:	NCSA
