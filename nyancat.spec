@@ -1,8 +1,8 @@
 %define debug_package %nil
 
 Name:		nyancat
-Version:	1.2.1
-Release:	1
+Version:	1.4.5
+Release:	2
 Summary:	Nyancat rendered in your terminal
 Group:		Toys
 License:	NCSA
@@ -23,9 +23,13 @@ Nyancat rendered in your terminal.
 %install
 mkdir -p %{buildroot}/%{_bindir}/
 mkdir -p %{buildroot}/%{_mandir}/man1/
+mkdir -p %{buildroot}/%{_unitdir}
 install -m 0755 src/%{name} %{buildroot}/%{_bindir}/%{name}
 install -m 0644 nyancat.1 %{buildroot}/%{_mandir}/man1/
+install -m 0644 systemd/*.{service,socket} %{buildroot}/%{_unitdir}
 
 %files
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1*
+%{_unitdir}/%{name}@.service
+%{_unitdir}/%{name}.socket
