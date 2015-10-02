@@ -1,11 +1,13 @@
+%define debug_package %nil
+
 Name:		nyancat
-Version:	0.1
-Release:	2
+Version:	1.2.1
+Release:	1
 Summary:	Nyancat rendered in your terminal
 Group:		Toys
 License:	NCSA
 URL:		https://github.com/klange/nyancat
-Source0:	https://nodeload.github.com/klange/nyancat/tarball/klange-nyancat-fbb9a73.tar.gz
+Source0:	https://github.com/klange/nyancat/archive/%{name}-%{version}.tar.gz
 
 BuildRequires:	python-devel
 
@@ -13,29 +15,17 @@ BuildRequires:	python-devel
 Nyancat rendered in your terminal.
 
 %prep
-%setup -q -n klange-%{name}-fbb9a73
+%setup -q
 
 %build
-
-%make
+%make LFLAGS="%{ldflags} %{optflags}" CC=%{__cc}
 
 %install
 mkdir -p %{buildroot}/%{_bindir}/
+mkdir -p %{buildroot}/%{_mandir}/man1/
 install -m 0755 src/%{name} %{buildroot}/%{_bindir}/%{name}
-install -m 0755 src/%{name}.py %{buildroot}/%{_bindir}/%{name}.py
-#telnetsrvlib.py /usr/lib/python2.7/site-packages/
-mkdir -p %{buildroot}/%{python_sitelib}/
-install -m 0644 src/telnetsrvlib.py %{buildroot}/%{python_sitelib}
-
+install -m 0644 nyancat.1 %{buildroot}/%{_mandir}/man1/
 
 %files
 %{_bindir}/%{name}
-%{_bindir}/%{name}.py
-%{python_sitelib}/telnetsrvlib.py
-
-
-%changelog
-* Thu Dec 01 2011 Alexander Khrukin <akhrukin@mandriva.org> 0.1-1
-+ Revision: 735981
-- imported package nyancat
-
+%{_mandir}/man1/%{name}.1*
