@@ -1,13 +1,13 @@
 %define debug_package %nil
 
 Name:		nyancat
-Version:	1.4.5
-Release:	2
+Version:	1.5.1
+Release:	1
 Summary:	Nyancat rendered in your terminal
 Group:		Toys
 License:	NCSA
 URL:		https://github.com/klange/nyancat
-Source0:	https://github.com/klange/nyancat/archive/%{name}-%{version}.tar.gz
+Source0:	https://github.com/klange/nyancat/archive/%{version}.tar.gz
 
 BuildRequires:	python-devel
 
